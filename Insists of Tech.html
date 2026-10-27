@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Insists of Tech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#000;--soft:#555;--rule:#000;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#000;--ink:#fff;--soft:#b5b5b5;--rule:#fff}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#000;--ink:#fff;--soft:#b5b5b5;--rule:#fff}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.7 "IBM Plex Mono",ui-monospace,Menlo,monospace}
+[hidden]{display:none!important}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.page{max-width:1040px;margin:0 auto;padding:0 28px}
+.masthead{padding:36px 0 22px;border-bottom:4px double var(--rule)}
+.logo{display:flex;align-items:center;justify-content:center;gap:20px;color:inherit;text-decoration:none}
+.mark{flex:none;width:76px;height:76px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:900 54px/1 "Playfair Display",Georgia,serif}
+.name{font:900 clamp(34px,7vw,68px)/1 "Playfair Display",Georgia,serif;letter-spacing:-.01em}
+nav{position:relative;display:flex;justify-content:flex-start;border-bottom:1px solid var(--rule);padding:10px 0;font-size:15px;font-weight:500}
+.burger{width:46px;height:46px;border:2px solid var(--ink);background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 11px;cursor:pointer}
+.burger span{display:block;height:3px;background:var(--ink)}
+.menu{position:absolute;top:calc(100% - 6px);left:0;z-index:5;min-width:220px;background:var(--bg);border:2px solid var(--ink);display:flex;flex-direction:column}
+.menu a{padding:14px 18px;text-decoration:none;border-bottom:1px solid var(--rule)}
+.menu a:last-child{border-bottom:0}
+.menu a:hover,.menu a[aria-current="page"]{background:var(--ink);color:var(--bg)}
+.cols{display:grid;grid-template-columns:1.8fr 1fr;margin-top:40px}
+.cols>section{padding:0 32px}
+.cols>section:first-child{padding-left:0;border-right:1px solid var(--rule)}
+.cols>section:last-child{padding-right:0}
+h1,h2{font-family:"Playfair Display",Georgia,serif;font-weight:900;line-height:1.1;margin:0}
+h1{font-size:clamp(30px,5vw,50px);margin-bottom:18px}
+h2{font-size:clamp(24px,3.4vw,34px);margin-bottom:12px}
+h3{font:600 15px/1.4 "IBM Plex Mono",monospace;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+p{margin:0 0 16px;max-width:62ch}
+.lede{font-size:18px}
+pre{margin:24px 0 0;padding:18px 20px;border:2px solid var(--ink);font:400 14.5px/1.7 "IBM Plex Mono",monospace;overflow-x:auto;white-space:pre}
+.side p{margin-bottom:22px;color:var(--soft)}
+.side h3:not(:first-child){margin-top:8px}
+.go{margin:44px 0 0;border-top:1px solid var(--rule);border-bottom:4px double var(--rule);padding:44px 0;text-align:center}
+.go h2{margin-bottom:24px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);border:2px solid var(--ink);padding:18px 48px;font:600 18px/1.2 "IBM Plex Mono",monospace;text-decoration:none;cursor:pointer}
+.btn:hover{background:var(--bg);color:var(--ink)}
+.btn.small{padding:10px 22px;font-size:15px}
+.top{margin:32px 0 0}
+.explore-head{margin:28px 0 8px}
+.explore-head p{color:var(--soft)}
+.list{display:grid;grid-template-columns:1fr 1fr;margin-top:28px}
+.list>div{padding:0 32px}
+.list>div:first-child{padding-left:0;border-right:1px solid var(--rule)}
+.list>div:last-child{padding-right:0}
+.item{padding:14px 0;border-bottom:1px solid var(--rule)}
+.item b{display:block;font-weight:600}
+.item span{color:var(--soft);font-size:14.5px}
+.end{text-align:center;margin:40px 0 0}
+.doc{margin-top:28px}
+.dl{text-align:center;margin-top:36px}
+.like{display:inline-flex;align-items:center;gap:10px}
+.like svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round}
+.like.on{background:var(--bg);color:var(--ink)}
+.like.on svg{fill:currentColor}
+.like.on:hover{background:var(--bg);color:var(--ink)}
+.like[disabled]{cursor:default}
+.lf{display:grid;gap:10px;max-width:360px;margin:20px auto 0;text-align:left}
+.lf label{font-weight:600;font-size:14px}
+.lf input{font:inherit;padding:12px 14px;border:2px solid var(--ink);border-radius:0;background:var(--bg);color:var(--ink);width:100%}
+.lf .btn.small{justify-self:start}
+.dl .err{margin:0;color:var(--ink);font-weight:600}
+.names{list-style:none;margin:10px auto 0;padding:0;max-width:360px;text-align:left;font-size:14.5px}
+.names li{padding:8px 0;border-top:1px solid var(--rule)}
+.names li:last-child{border-bottom:1px solid var(--rule)}
+.dl .count{margin:16px auto 0;color:var(--ink);font-weight:600;font-size:15px}
+.dl p{margin:12px auto 0;color:var(--soft);font-size:14px}
+.wwh{display:grid;grid-template-columns:repeat(3,1fr);margin:28px 0 8px}
+.wwh>div{padding:0 24px;border-right:1px solid var(--rule)}
+.wwh>div:first-child{padding-left:0}
+.wwh>div:last-child{padding-right:0;border-right:0}
+.sec{margin-top:40px}
+.flow{list-style:none;margin:0;padding:0;counter-reset:f}
+.flow li{counter-increment:f;display:grid;grid-template-columns:44px 1fr;column-gap:12px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.flow li::before{content:counter(f);grid-row:1/3;width:32px;height:32px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:600}
+.flow b{display:block;font-weight:600}
+.flow span{color:var(--soft);font-size:15px}
+.doc pre{margin-top:0;font-size:13px}
+@media (max-width:760px){.wwh{grid-template-columns:1fr}.wwh>div{padding:0 0 18px;margin-bottom:18px;border-right:0;border-bottom:1px solid var(--rule)}.wwh>div:last-child{border-bottom:0}}
+.facts{margin-top:44px;border-top:1px solid var(--rule);padding-top:36px}
+.fsub{color:var(--soft);margin-bottom:8px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:32px}
+@media (max-width:760px){.fgrid{grid-template-columns:1fr}}
+footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:44px;padding:16px 0 28px;font-size:13.5px;color:var(--soft)}
+@media (max-width:760px){
+.page{padding:0 18px}.mark{width:52px;height:52px;font-size:36px}.logo{gap:12px}.masthead{padding-top:24px}
+.cols,.list{grid-template-columns:1fr}
+.cols>section,.list>div{padding:0}
+.cols>section:first-child,.list>div:first-child{border-right:0;padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--rule)}
+.btn{display:block;padding:18px 16px}.btn.small{display:inline-block}
+nav{gap:24px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="masthead"><div class="logo"><span class="mark" aria-hidden="true">D</span><span class="name">Insists of Tech</span></div></header>
+<nav aria-label="Main"><button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span><span></span></button><div class="menu" id="menu" hidden><a href="#home" data-go="home" id="n-home">Home</a><a href="#explore" data-go="explore" id="n-explore">Explore tech</a></div></nav>
+
+<div id="home">
+<main class="cols">
+<section>
+<h1>Tech info for community and developers</h1>
+<p class="lede">Here you will get tech news, guides and tips from Insists of Tech, written for the community and for developers.</p>
+<pre>> you will get here:
+  Insists of Tech
+  tech info for community
+  tech info for developers</pre>
+</section>
+<section class="side">
+<h3>// For community</h3>
+<p>Tech news<br>Simple explainers<br>Useful tips</p>
+<h3>// For developers</h3>
+<p>Guides<br>Tools<br>Code notes</p>
+</section>
+</main>
+<section class="go">
+<h2>You will get here good tech to use</h2>
+<a class="btn" href="#explore" data-go="explore">Click to explore tech</a>
+</section>
+</div>
+
+<div id="explore" hidden>
+<div class="top"><a class="btn small" href="#home" data-go="home">Back to home</a></div>
+<article class="doc">
+<div class="wwh">
+<div><h3>// Who</h3><p>DevOps Engineers and Backend Developers building high-availability cloud applications.</p></div>
+<div><h3>// Why</h3><p>To eliminate system downtime and midnight pager alerts caused by unexpected runtime errors or bad third-party API data.</p></div>
+<div><h3>// How</h3><p>By embedding this engine as a middleware wrapper around fragile functions, allowing the software to automatically intercept errors, patch its own memory, and keep running seamlessly.</p></div>
+</div>
+<ol class="flow" style="margin-top:32px">
+<li><b>The Crash</b><span>The code runs a fragile math function but feeds it broken input data types (a number plus text).</span></li>
+<li><b>The Interception</b><span>Instead of crashing the whole system, the engine catches the exact error message at runtime.</span></li>
+<li><b>The Lookup</b><span>It searches its internal registry to find a dynamic, generative logic patch that matches the exact failure.</span></li>
+<li><b>The Self-Heal</b><span>The system uses dynamic compilation to instantly build and inject the fixed code into computer memory.</span></li>
+<li><b>The Recovery</b><span>The engine seamlessly reruns the failed task using the new logic without the user ever noticing a crash.</span></li>
+</ol>
+<div class="dl">
+<button class="btn like" id="like" type="button" aria-expanded="false" aria-controls="lf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.5-9.2C1.2 8.6 3 5 6.5 5c2 0 3.6 1.1 5.5 3.2C13.9 6.1 15.5 5 17.5 5 21 5 22.8 8.6 21.5 11.8 19.5 16.4 12 21 12 21z"/></svg><span class="t">Like to see the code</span></button>
+<form id="lf" class="lf" hidden novalidate><label for="ln">Your name</label><input id="ln" maxlength="40" autocomplete="name"><button class="btn small" type="submit">Send like</button><p class="err" id="lerr" role="alert"></p></form>
+<p class="count" id="lc" role="status">Likes: ...</p>
+<ul class="names" id="lnames"></ul>
+<p class="note" id="lm" role="status"></p>
+</div>
+<div id="code" hidden style="margin-top:32px"><h3>// self_healing_engine.py</h3>
+<pre tabindex="0"># Self-Healing State Engine Prototype
+# Run this file with Python to see it autonomously patch its own crash.
+
+import inspect
+import sys
+
+class SelfHealingEngine:
+    def __init__(self):
+        # The engine's knowledge base of dynamic fixes
+        self.patch_registry = {
+            "TypeError: unsupported operand type(s) for +: 'int' and 'str'": 
+                "lambda a, b: int(a) + int(b) if str(a).isdigit() and str(b).isdigit() else str(a) + str(b)"
+        }
+
+    def execute_safely(self, func, *args):
+        """Attempts to run a function. If it breaks, it analyzes, heals, and re-executes it."""
+        try:
+            return func(*args)
+        except Exception as e:
+            error_message = str(e)
+            error_type = type(e).__name__
+            lookup_key = f"{error_type}: {error_message}"
+            
+            print(f"💥 SYSTEM CRASH DETECTED: {lookup_key}")
+            print("🤖 Activating Living Codebase Protocol...")
+
+            if lookup_key in self.patch_registry:
+                patch_code = self.patch_registry[lookup_key]
+                print(f"🔧 Generative Patch Found: {patch_code}")
+                
+                # Dynamic compilation: Compile the new logic into memory
+                healed_func = eval(patch_code)
+                
+                print("⚡ Applying runtime hot-fix... Success.")
+                return healed_func(*args)
+            else:
+                print("❌ Unknown error boundary. Unable to self-heal.")
+                raise e
+
+# --- Demonstration ---
+def brittle_addition(a, b):
+    return a + b
+
+runtime = SelfHealingEngine()
+
+print("--- Run 1: Normal Execution ---")
+result_normal = runtime.execute_safely(brittle_addition, 10, 20)
+print(f"Result: {result_normal}\n")
+
+print("--- Run 2: Unpredicted Input (The Crash Event) ---")
+# Passing a string instead of an int would normally crash a traditional system
+result_healed = runtime.execute_safely(brittle_addition, 10, "50")
+print(f"Final Seam-free Output: {result_healed}")</pre></div>
+</article>
+<div class="end"><a class="btn small" href="#home" data-go="home">Back to home</a></div>
+</div>
+
+<footer><span>© 2026 Insists of Tech</span><span>All rights reserved</span></footer>
+</div>
+<script>
+var views={home:document.getElementById('home'),explore:document.getElementById('explore')};
+function show(v){
+  if(!views[v])v='home';
+  for(var k in views){views[k].hidden=(k!==v);}
+  var h=document.getElementById('n-home'),e=document.getElementById('n-explore');
+  h.removeAttribute('aria-current');e.removeAttribute('aria-current');
+  (v==='explore'?e:h).setAttribute('aria-current','page');
+  document.title=v==='explore'?'Explore tech | Insists of Tech':'Insists of Tech';
+  window.scrollTo(0,0);
+  closeMenu();
+}
+document.addEventListener('click',function(ev){
+  var a=ev.target.closest('[data-go]');
+  if(!a)return;
+  ev.preventDefault();
+  var v=a.getAttribute('data-go');
+  show(v);
+  try{location.hash=v;}catch(err){}
+});
+var bu=document.getElementById('burger'),mn=document.getElementById('menu');
+function closeMenu(){mn.hidden=true;bu.setAttribute('aria-expanded','false');bu.setAttribute('aria-label','Open menu');}
+bu.addEventListener('click',function(ev){ev.stopPropagation();var open=mn.hidden;mn.hidden=!open;bu.setAttribute('aria-expanded',open?'true':'false');bu.setAttribute('aria-label',open?'Close menu':'Open menu');});
+document.addEventListener('click',function(ev){if(!ev.target.closest('nav'))closeMenu();});
+document.addEventListener('keydown',function(ev){if(ev.key==='Escape')closeMenu();});
+window.addEventListener('hashchange',function(){show(location.hash.replace('#',''));});
+show(location.hash.replace('#',''));
+</script>
+<script>
+(function(){
+  var b=document.getElementById('like'),f=document.getElementById('lf'),inp=document.getElementById('ln'),err=document.getElementById('lerr'),cnt=document.getElementById('lc'),list=document.getElementById('lnames'),msg=document.getElementById('lm'),code=document.getElementById('code'),K='iot-liked',db=null;
+  function unlock(){b.classList.add('on');b.querySelector('.t').textContent='Like again';code.hidden=false;}
+  try{if(localStorage.getItem(K))unlock();}catch(e){}
+  var p=(window.claude&&window.claude.use)?window.claude.use('db'):Promise.resolve(null);
+  p.then(function(d){
+    db=d;
+    if(!d){cnt.textContent='Like count is not available in this view.';return;}
+    d.collection('likes').onSnapshot(function(s){
+      var rows=s.docs.map(function(x){return x.data();}).sort(function(a,c){return (c.at||0)-(a.at||0);});
+      var n=rows.length;
+      cnt.textContent='Likes: '+n;
+      list.textContent='';
+      rows.slice(0,50).forEach(function(r){var li=document.createElement('li');li.textContent=String(r.name||'');list.appendChild(li);});
+    },function(){cnt.textContent='Like count is not available in this view.';});
+  }).catch(function(){cnt.textContent='Like count is not available in this view.';});
+  b.addEventListener('click',function(){
+    var open=f.hidden;f.hidden=!open;b.setAttribute('aria-expanded',open?'true':'false');
+    if(open)inp.focus();
+  });
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var name=inp.value.trim(),sb=f.querySelector('button[type=submit]');
+    err.textContent='';msg.textContent='';
+    if(!name){err.textContent='Enter your name to send your like.';inp.focus();return;}
+    function finish(saved){
+      try{localStorage.setItem(K,'1');}catch(e){}
+      unlock();sb.disabled=false;f.hidden=true;b.setAttribute('aria-expanded','false');inp.value='';
+      msg.textContent=saved?'Thanks, '+name+'. Your like is counted.':'Thanks, '+name+'. Your like could not be counted on this view.';
+    }
+    sb.disabled=true;
+    if(!db){finish(false);return;}
+    db.collection('likes').add({name:name,at:Date.now()}).then(function(){finish(true);}).catch(function(){finish(false);});
+  });
+})();
+</script>
+</body>
+</html>
